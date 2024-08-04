@@ -1,0 +1,38 @@
+import { Navbar, NavbarContent } from "@nextui-org/react";
+import React from "react";
+import { BurguerButton } from "./burguer-button";
+import { NotificationsDropdown } from "./notifications-dropdown";
+import { UserDropdown } from "./user-dropdown";
+
+export const NavbarWrapper = ({ children }) => {
+  return (
+    <div className="relative flex flex-col flex-1">
+      <Navbar
+        isBordered
+        className="w-full sticky top-0 z-10 flex justify-between"
+        classNames={{
+          wrapper: "w-full max-w-full",
+        }}
+      >
+        <NavbarContent className="md:hidden">
+          <BurguerButton />
+        </NavbarContent>
+        <NavbarContent >
+        </NavbarContent>
+        <NavbarContent
+          justify="end"
+          className="w-fit data-[justify=end]:flex-grow-0 md:justify-start flex-grow-0"
+        >
+          <NotificationsDropdown />
+          <NavbarContent>
+            <UserDropdown />
+          </NavbarContent>
+        </NavbarContent>
+      </Navbar>
+      <div className=" flex flex-col overflow-y-auto overflow-x-hidden">
+      {children}
+      </div>
+ 
+    </div>
+  );
+};
